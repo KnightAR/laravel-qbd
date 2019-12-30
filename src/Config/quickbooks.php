@@ -4,8 +4,8 @@ return [
     'qb_username'   => env('QB_USERNAME'),
     'qb_password'   => env('QB_PASSWORD'),
 
-    'qb_timezone'   => env('QB_TIMEZONE'),
-    'qb_log_level'  => constant(env('QB_LOGLEVEL')),
+    'qb_timezone'   => env('QB_TIMEZONE') ? env('QB_TIMEZONE') : 'America/Los_Angeles',
+    'qb_log_level'  => env('QB_LOGLEVEL') ? constant(env('QB_LOGLEVEL')) : NULL,
     'qb_mem_limit'  => env('QB_MEMLIMIT'),
 
     'error_map'     => array(
@@ -15,7 +15,7 @@ return [
     'hooks'			=> array(), // An array of callback hooks
 
     'soap'			=> array(
-    					'server' 	=> constant(env('QB_SOAPSERVER')), // A pure-PHP SOAP server (no PHP ext/soap extension required, also makes debugging easier)
+                        'server' 	=> env('QB_SOAPSERVER') ? constant(env('QB_SOAPSERVER')) : NULL, // A pure-PHP SOAP server (no PHP ext/soap extension required, also makes debugging easier)
     					'options'	=> [] // See http://www.php.net/soap
     ),
 
